@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { db } from '../../../../../infra/firebase'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import BlockIcon from '@material-ui/icons/Block'
 import DeleteIcon from '@material-ui/icons/Delete'
@@ -9,8 +8,9 @@ import {
   Menu,
   MenuItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from '@material-ui/core'
+import { deleteChat } from '../../../../../domain/usecases/chat/publicMenu'
 
 const PrivateMenu = () => {
   const { chatID } = useParams<{ chatID: string }>()
@@ -20,8 +20,8 @@ const PrivateMenu = () => {
     setAnchorEl(e.currentTarget)
   }
 
-  const deleteChat = () => {
-    db.collection('chats').doc(chatID).delete()
+  const internalDeleteChat = () => {
+    deleteChat(chatID)
     closeMenu()
   }
 
@@ -46,7 +46,7 @@ const PrivateMenu = () => {
           </ListItemIcon>
           <ListItemText primary="Block" />
         </MenuItem>
-        <MenuItem onClick={deleteChat}>
+        <MenuItem onClick={internalDeleteChat} data-testid="delete">
           <ListItemIcon>
             <DeleteIcon fontSize="small" />
           </ListItemIcon>

@@ -6,7 +6,11 @@ import Chat from '../../../../types/Chat'
 import PrivateMenu from './PrivateMenu'
 import PublicMenu from './PublicMenu'
 import { AppState } from '../../../../store'
-import { cutText, formatDate, getOtherPrivateChatMember } from '../../../../utils'
+import {
+  cutText,
+  formatDate,
+  getOtherPrivateChatMember,
+} from '../../../../utils'
 import { Avatar, Box, Typography } from '@material-ui/core'
 import useStyles from './styles'
 
@@ -41,8 +45,7 @@ const ChatBar = () => {
       borderLeft={0}
       borderColor={'divider'}
     >
-      {chat
-        ? (
+      {chat ? (
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box display="flex" alignItems="center">
             <Avatar
@@ -74,18 +77,15 @@ const ChatBar = () => {
               </Typography>
             </Box>
           </Box>
-          {chat.type === 'private'
-            ? (
+          {chat.type === 'private' ? (
             <PrivateMenu />
-              )
-            : (
+          ) : (
             <PublicMenu chat={chat} isOwner={chat.createdBy === user.uid} />
-              )}
-        </Box>
-          )
-        : (
-            ''
           )}
+        </Box>
+      ) : (
+        ''
+      )}
     </Box>
   )
 }

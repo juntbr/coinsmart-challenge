@@ -16,9 +16,14 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-  Dialog
+  Dialog,
 } from '@material-ui/core'
-import { addPerson, deleteChat, leaveChat, renameChat } from '../../../../../domain/usecases/chat/publicMenu'
+import {
+  addPerson,
+  deleteChat,
+  leaveChat,
+  renameChat,
+} from '../../../../../domain/usecases/chat/publicMenu'
 
 interface Props {
   chat: Chat
@@ -27,7 +32,6 @@ interface Props {
 
 const PublicMenu = ({ chat, isOwner }: Props) => {
   const user = useSelector((state: AppState) => state.user)
-  console.log(chat)
   const { chatID } = useParams<{ chatID: string }>()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [isAddPersonDialogOpen, setIsAddPersonDialogOpen] = useState(false)
@@ -60,7 +64,8 @@ const PublicMenu = ({ chat, isOwner }: Props) => {
   }
 
   const addPersons = async (id: string) => {
-    if (chat.members.find((member) => member.uid === id)) return addPerson(id, chatID, chat)
+    if (chat.members.find((member) => member.uid === id))
+      return addPerson(id, chatID, chat)
   }
 
   const internalDeleteChat = () => {
@@ -87,41 +92,37 @@ const PublicMenu = ({ chat, isOwner }: Props) => {
         open={Boolean(anchorEl)}
         onClose={closeMenu}
       >
-        <MenuItem onClick={openAddPersonDialog}>
+        <MenuItem onClick={openAddPersonDialog} data-testid="add-person">
           <ListItemIcon>
             <AddIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText primary="Add person" />
         </MenuItem>
-        {isOwner
-          ? (
-            <MenuItem onClick={openRenameDialog}>
-              <ListItemIcon>
-                <EditIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Rename" />
-            </MenuItem>
-            )
-          : (
-              ''
-            )}
-        {isOwner
-          ? (
-            <MenuItem onClick={internalDeleteChat}>
-              <ListItemIcon>
-                <DeleteIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Delete" />
-            </MenuItem>
-            )
-          : (
-            <MenuItem onClick={internalLeaveChat}>
-              <ListItemIcon>
-                <ExitToAppIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText primary="Leave" />
-            </MenuItem>
-            )}
+        {isOwner ? (
+          <MenuItem onClick={openRenameDialog} data-testid="rename">
+            <ListItemIcon>
+              <EditIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Rename" />
+          </MenuItem>
+        ) : (
+          ''
+        )}
+        {isOwner ? (
+          <MenuItem onClick={internalDeleteChat} data-testid="delete">
+            <ListItemIcon>
+              <DeleteIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Delete" />
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={internalLeaveChat} data-testid="leave">
+            <ListItemIcon>
+              <ExitToAppIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Leave" />
+          </MenuItem>
+        )}
         <Dialog open={isAddPersonDialogOpen} onClose={closeAddPersonDialog}>
           <UserSearch
             onItemClick={addPersons}

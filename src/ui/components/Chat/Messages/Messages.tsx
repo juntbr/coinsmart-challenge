@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Message from '../../../../types/Message'
-import { db } from '../../../../infra/firebase'
+import { subscribeMessages } from '../../../../domain/usecases/chat/chat'
 import { AppState } from '../../../../store'
 import { convertDocToMessage } from '../../../../utils'
 import { Box, Typography } from '@material-ui/core'
@@ -16,25 +16,19 @@ const Messages = () => {
   const [messages, setMessages] = useState<Message[]>([])
 
   useEffect(() => {
-    const unsubscribe = subscribeMessages()
+    const unsubscribe = internalSubscribeMessages()
 
     return () => {
       unsubscribe()
     }
   }, [chatID])
 
-  const subscribeMessages = () => {
-    return db
-      .collection('messages')
-      .doc(chatID)
-      .collection('messages')
-      .orderBy('sentAt', 'desc')
-      .limit(30)
-      .onSnapshot((snapshot) => {
-        const messages = snapshot.docs.map((doc) => convertDocToMessage(doc))
-        setMessages(messages)
-        scroll.current.scrollIntoView({ behavior: 'smooth' })
-      })
+  const internalSubscribeMessages = () => {
+    return subscribeMessages(chatID).onSnapshot((snapshot) => {
+      const messages = snapshot.docs.map((doc) => convertDocToMessage(doc))
+      setMessages(messages)
+      scroll.current.scrollIntoView({ behavior: 'smooth' })
+    })
   }
 
   return (
@@ -50,6 +44,7 @@ const Messages = () => {
       {messages.map((message) => (
         <Box
           key={message.id}
+          data-testid="messages"
           className={`${classes.message} ${
             message.sentBy.uid === user.uid ? classes.ownMessage : ''
           }`}

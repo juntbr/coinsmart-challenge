@@ -37,25 +37,26 @@ const App = () => {
   const internalfFetchUserData = async () => {
     if (!user) return
 
-    await fetchUserData(user)
-      .then((snapshot) => {
-        dispatch(setUser(convertDocToUser(snapshot)))
-        setFetchingUserData(false)
-      })
+    await fetchUserData(user).then((snapshot) => {
+      dispatch(setUser(convertDocToUser(snapshot)))
+      setFetchingUserData(false)
+    })
   }
 
   const internalSubscribeChats = () => {
-    if (!user) return () => { }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    if (!user) return () => {}
 
-    return subscribeChats(user)
-      .onSnapshot((snapshot) => {
-        const chats = snapshot.docs.map((doc) => convertDocToChat(doc))
-        dispatch(setChats(chats))
-        setFetchingChatsData(false)
-      })
+    return subscribeChats(user).onSnapshot((snapshot) => {
+      const chats = snapshot.docs.map((doc) => convertDocToChat(doc))
+      dispatch(setChats(chats))
+      setFetchingChatsData(false)
+    })
   }
 
-  if (loading || (user && (fetchingUserData || fetchingChatsData))) { return <Loading /> }
+  if (loading || (user && (fetchingUserData || fetchingChatsData))) {
+    return <Loading />
+  }
 
   if (!user) return <Login Auth={Auth} />
   return <Home />

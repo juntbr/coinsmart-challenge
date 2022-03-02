@@ -2,12 +2,12 @@ import { db } from '../../../infra/firebase'
 import firebase from 'firebase/app'
 
 interface sendMessageProps {
-    chatID: string,
-    input: string,
-    user: any
+  chatID: string
+  input: string
+  user: any
 }
 
-export const sendMessage = async (params:sendMessageProps) => {
+export const sendMessage = async (params: sendMessageProps) => {
   const { chatID, user, input } = params
   await db
     .collection('messages')
@@ -18,8 +18,8 @@ export const sendMessage = async (params:sendMessageProps) => {
       sentAt: firebase.firestore.FieldValue.serverTimestamp(),
       sentBy: {
         uid: user.uid,
-        displayName: user.displayName
-      }
+        displayName: user.displayName,
+      },
     })
 
   await db
@@ -32,10 +32,19 @@ export const sendMessage = async (params:sendMessageProps) => {
           sentAt: firebase.firestore.FieldValue.serverTimestamp(),
           sentBy: {
             uid: user.uid,
-            displayName: user.displayName
-          }
-        }
+            displayName: user.displayName,
+          },
+        },
       },
       { merge: true }
     )
+}
+
+export const subscribeMessages = (chatID: string) => {
+  return db
+    .collection('messages')
+    .doc(chatID)
+    .collection('messages')
+    .orderBy('sentAt', 'desc')
+    .limit(30)
 }

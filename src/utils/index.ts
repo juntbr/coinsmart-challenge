@@ -8,7 +8,7 @@ export const convertDocToUser = (doc: any): User => {
     uid: doc.data().uid,
     displayName: doc.data().displayName,
     email: doc.data().email,
-    photoURL: doc.data().photoURL
+    photoURL: doc.data().photoURL,
   }
   return user
 }
@@ -21,7 +21,7 @@ export const convertDocToChat = (doc: any): Chat => {
     createdBy: doc.data().createdBy,
     type: doc.data().type,
     members: doc.data().members,
-    recentMessage: doc.data().recentMessage
+    recentMessage: doc.data().recentMessage,
   }
   return chat
 }
@@ -31,7 +31,7 @@ export const convertDocToMessage = (doc: any): Message => {
     id: doc.id,
     text: doc.data().text,
     sentBy: doc.data().sentBy,
-    sentAt: doc.data().sentAt
+    sentAt: doc.data().sentAt,
   }
   return message
 }

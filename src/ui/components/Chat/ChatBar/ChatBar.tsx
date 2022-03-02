@@ -21,10 +21,8 @@ const ChatBar = () => {
   const { chatID } = useParams<{ chatID: string }>()
   const [chat, setChat] = useState<Chat>()
   const [otherMember, setOtherMember] = useState<User>()
-
   useEffect(() => {
     setChat(chats.find((chat) => chat.id === chatID))
-
     if (chat) {
       if (chat.type === 'private') {
         const otherMember = getOtherPrivateChatMember(chat, user.uid)
@@ -61,14 +59,18 @@ const ChatBar = () => {
               justifyContent="center"
               ml={1}
             >
-              <Typography className={classes.bold}>
+              <Typography className={classes.bold} data-testid="chat-user">
                 {chat.type === 'private'
                   ? otherMember
                     ? cutText(otherMember.displayName, 24)
                     : ''
                   : cutText(chat.name, 24)}
               </Typography>
-              <Typography variant="caption" color="textSecondary">
+              <Typography
+                variant="caption"
+                color="textSecondary"
+                data-testid="last-message"
+              >
                 {` ${
                   chat.recentMessage
                     ? 'Last message at ' + formatDate(chat.recentMessage.sentAt)

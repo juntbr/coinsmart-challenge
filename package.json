@@ -6,7 +6,7 @@
     "build": "webpack --config webpack/webpack.config.js --env env=prod",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "keywords": [
     "React",
@@ -24,7 +24,6 @@
     "@material-ui/icons": "^4.11.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
-    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/node": "^12.20.18",
@@ -101,6 +100,7 @@
     "@babel/preset-typescript": "^7.12.16",
     "@babel/runtime": "^7.13.10",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@testing-library/jest-dom": "^5.16.2",
     "@types/jest": "^27.4.1",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",

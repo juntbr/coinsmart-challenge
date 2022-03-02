@@ -70,6 +70,7 @@ const SendBox: FC = () => {
           placeholder="Aa"
           onChange={(e) => setInput(e.target.value)}
           value={input}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
         />
         <IconButton type="submit">

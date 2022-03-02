@@ -10,7 +10,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
-import { deleteChat } from '../../../../../domain/usecases/chat/publicMenu'
+import { deleteChat } from '@domain/usecases/chat/publicMenu'
 
 const PrivateMenu = () => {
   const { chatID } = useParams<{ chatID: string }>()

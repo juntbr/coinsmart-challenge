@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import UserSearch from '../../../UserSearch/UserSearch'
-import Chat from '../../../../../types/Chat'
+import Chat from '@types/Chat'
 import InputBox from '../../../InputBox/InputBox'
-import { AppState } from '../../../../../store'
+import { AppState } from '@app/store'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
@@ -23,7 +23,7 @@ import {
   deleteChat,
   leaveChat,
   renameChat,
-} from '../../../../../domain/usecases/chat/publicMenu'
+} from '@domain/usecases/chat/publicMenu'
 
 interface Props {
   chat: Chat

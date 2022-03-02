@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable prettier/prettier */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -5,6 +7,14 @@ module.exports = {
   entry: path.resolve(__dirname, '..', './src/index.tsx'),
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    alias: {
+      '@assets': path.resolve(__dirname, '../src/assets/'),
+      '@domain': path.resolve(__dirname, '../src/domain/'),
+      '@mocks': path.resolve(__dirname, '../src/__mocks__/'),
+      '@infra': path.resolve(__dirname, '../src/infra/'),
+      '@types': path.resolve(__dirname, '../src/types/'),
+      '@app': path.resolve(__dirname, '../src/application/'),
+    },
   },
   module: {
     rules: [

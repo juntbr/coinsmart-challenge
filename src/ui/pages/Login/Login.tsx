@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import logo from '../../../assets/logo192.png'
+import logo from '@assets/logo192.png'
 import { Box, Button, Typography } from '@material-ui/core'
 import useStyles from './styles'
 
@@ -42,12 +42,7 @@ const Login: FC<LoginPros> = ({ Auth }) => {
             <img className={classes.image} src={logo} alt="" />
           </Box>
           <Typography className={classes.title}>Welcome to APP</Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={Auth}
-            fullWidth
-          >
+          <Button variant="contained" color="primary" onClick={Auth} fullWidth>
             Sign in with Google
           </Button>
         </Box>

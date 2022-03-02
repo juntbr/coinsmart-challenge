@@ -22,9 +22,30 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "@assets": [
+        "src/assets"
+      ],
+      "@domain": [
+        "src/domain"
+      ],
+      "@mocks": [
+        "src/__mocks__/"
+      ],
+      "@infra": [
+        "infra"
+      ],
+      "@types": [
+        "src/types"
+      ],
+      "@app": [
+        "src/application"
+      ],
+    }
   },
   "include": [
     "src"
-  ]
+  ],
 }

@@ -37,4 +37,4 @@ I developed it in just four days. So in my opininion after developing, I could r
 
 Then I would add: <br /> ● I can interact with received messages in a channel and reply to them. Actually this is a really cool feature to develop.
 
-I could also improve web perfomance, however the google lighouse score for the website it's good, almost 90 points.
+I could also improve web perfomance, however the google lighthouse score for the website it's good, almost 90 points.

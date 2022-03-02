@@ -36,3 +36,5 @@ Possible next steps if you had more time. What assumptions did you make?
 I developed it in only four days. So in my opininion after developing it, I could refactor my archtecture to sync firebase websockets requests inside application folder (redux), then I would have a more testable code, with 100% reliable testing.
 
 Then I would add: <br /> ● I can interact with received messages in a channel and reply to them. Actually this is a really cool feature to develop.
+
+I could also improve web perfomance, however the google lighouse score for the website it's good, almost 90 points.

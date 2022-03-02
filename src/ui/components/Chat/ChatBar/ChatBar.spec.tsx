@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import { render, screen } from '@testing-library/react'
 import { CHAT_BAR_MOCK } from '../../../../__mocks__/chatBar'
+// eslint-disable-next-line import/default
 import Router from 'react-router-dom'
 import '@testing-library/jest-dom'
 

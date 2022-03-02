@@ -23,25 +23,25 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "src/",
     "paths": {
-      "@assets": [
-        "src/assets"
+      "@assets/*": [
+        "assets/*"
       ],
-      "@domain": [
-        "src/domain"
+      "@domain/*": [
+        "domain/*"
       ],
-      "@mocks": [
-        "src/__mocks__/"
+      "@mocks/*": [
+        "__mocks__/*"
       ],
-      "@infra": [
-        "infra"
+      "@infra/*": [
+        "infra/*"
       ],
-      "@types": [
-        "src/types"
+      "@types/*": [
+        "types/*"
       ],
-      "@app": [
-        "src/application"
+      "@app/*": [
+        "application/"
       ],
     }
   },

@@ -38,9 +38,7 @@ const Login: FC<LoginPros> = ({ Auth }) => {
           maxWidth="400px"
           height="250px"
         >
-          <Box className={classes.imageShadow} boxShadow={2}>
-            <img className={classes.image} src={logo} alt="" />
-          </Box>
+          <img className={classes.image} src={logo} alt="" />
           <Typography className={classes.title}>Welcome to APP</Typography>
           <Button variant="contained" color="primary" onClick={Auth} fullWidth>
             Sign in with Google

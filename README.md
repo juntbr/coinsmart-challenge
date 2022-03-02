@@ -24,9 +24,9 @@ Few words on which features were selected and why?
 
 I created a simple web chat app with three features:
 
-● As a User of the web-app, I can see a list of all the channels 
-● As a User of the web-app, I can join a channel and see the history of it
-● As a User of the web-app, I can send messages to a channel after I have joined it 
+● As a User of the web-app, I can see a list of all the channels <br />
+● As a User of the web-app, I can join a channel and see the history of it <br />
+● As a User of the web-app, I can send messages to a channel after I have joined it <br />
 
 These features are necessary for a chat.The rest would be considered as extra features in my opinion. 
 

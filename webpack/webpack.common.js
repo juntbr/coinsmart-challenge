@@ -12,7 +12,7 @@ module.exports = {
       '@domain': path.resolve(__dirname, '../src/domain/'),
       '@mocks': path.resolve(__dirname, '../src/__mocks__/'),
       '@infra': path.resolve(__dirname, '../src/infra/'),
-      '@types': path.resolve(__dirname, '../src/types/'),
+      '@customTypes': path.resolve(__dirname, '../src/types/'),
       '@app': path.resolve(__dirname, '../src/application/'),
     },
   },

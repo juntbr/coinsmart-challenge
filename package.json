@@ -137,7 +137,7 @@
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "eslint --fix",
       "git add",
-      "npm run test"
+      "jest --detectOpenHandles --coverage --passWithNoTests"
     ],
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"

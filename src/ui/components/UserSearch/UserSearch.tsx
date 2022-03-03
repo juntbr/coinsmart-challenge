@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import User from '@types/User'
+import User from '@customTypes/User'
 import { db } from '@infra/firebase'
-import { AppState } from '@app/store'
+import { AppState } from '../../../store'
 import { convertDocToUser } from '../../../utils'
 import { Avatar, Box, Button, Input, List, ListItem } from '@material-ui/core'
 import useStyles from './styles'
@@ -71,6 +71,7 @@ const UserSearch = ({ onItemClick, onCancel, avoidIdList }: Props) => {
         value={input}
         disableUnderline
         required
+        // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus
       />
       <List className={classes.list}>{usersList}</List>

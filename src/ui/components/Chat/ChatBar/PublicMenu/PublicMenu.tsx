@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import UserSearch from '../../../UserSearch/UserSearch'
-import Chat from '@types/Chat'
+import Chat from '@customTypes/Chat'
 import InputBox from '../../../InputBox/InputBox'
-import { AppState } from '@app/store'
+import { AppState } from '../../../../../store'
 import AddIcon from '@material-ui/icons/Add'
 import EditIcon from '@material-ui/icons/Edit'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
@@ -64,8 +64,11 @@ const PublicMenu = ({ chat, isOwner }: Props) => {
   }
 
   const addPersons = async (id: string) => {
-    if (chat.members.find((member) => member.uid === id))
-      return addPerson(id, chatID, chat)
+    // eslint-disable-next-line prettier/prettier
+    if (chat.members.find((member: { uid: string }) => member.uid === id))
+      return
+
+    addPerson(id, chatID, chat)
   }
 
   const internalDeleteChat = () => {

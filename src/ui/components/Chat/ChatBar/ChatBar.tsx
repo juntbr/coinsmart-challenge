@@ -20,6 +20,7 @@ const ChatBar = () => {
   const chats = useSelector((state: AppState) => state.chats)
   const { chatID } = useParams<{ chatID: string }>()
   const [chat, setChat] = useState<Chat>()
+
   const [otherMember, setOtherMember] = useState<User>()
   useEffect(() => {
     setChat(chats.find((chat) => chat.id === chatID))

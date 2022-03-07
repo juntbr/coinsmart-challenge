@@ -18,12 +18,7 @@ import {
   ListItemText,
   Dialog,
 } from '@material-ui/core'
-import {
-  addPerson,
-  deleteChat,
-  leaveChat,
-  renameChat,
-} from '@domain/usecases/chat/publicMenu'
+import { useChat } from '../../../../pages/Home/contexts/chatContext'
 
 interface Props {
   chat: Chat
@@ -33,6 +28,7 @@ interface Props {
 const PublicMenu = ({ chat, isOwner }: Props) => {
   const user = useSelector((state: AppState) => state.user)
   const { chatID } = useParams<{ chatID: string }>()
+  const { addPerson, deleteChat, leaveChat, renameChat } = useChat()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [isAddPersonDialogOpen, setIsAddPersonDialogOpen] = useState(false)
   const [isRenameDialogOpen, setIsRenameDialogOpen] = useState(false)

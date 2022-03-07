@@ -10,10 +10,11 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
-import { deleteChat } from '@domain/usecases/chat/publicMenu'
+import { useChat } from '../../../../pages/Home/contexts/chatContext'
 
 const PrivateMenu = () => {
   const { chatID } = useParams<{ chatID: string }>()
+  const { deleteChat } = useChat()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const openMenu = (e: React.MouseEvent<HTMLElement>) => {

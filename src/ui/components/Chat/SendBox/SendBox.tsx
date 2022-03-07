@@ -2,16 +2,17 @@ import React, { FC, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Picker from 'emoji-picker-react'
-import { sendMessage } from '@domain/usecases/chat/chat'
-import { AppState } from '@store'
+import { AppState } from '../../../../store'
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions'
 import SendIcon from '@material-ui/icons/Send'
+import { useChat } from '../../../pages/Home/contexts/chatContext'
 import { Box, IconButton, Input, Popover } from '@material-ui/core'
 import useStyles from './styles'
 
 const SendBox: FC = () => {
   const classes = useStyles()
   const user = useSelector((state: AppState) => state.user)
+  const { sendMessage } = useChat()
   const { chatID } = useParams<{ chatID: string }>()
   const [input, setInput] = useState('')
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)

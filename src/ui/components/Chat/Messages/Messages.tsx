@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import Message from '../../../../types/Message'
-import { subscribeMessages } from '@domain/usecases/chat/chat'
 import { AppState } from '../../../../store'
 import { convertDocToMessage } from '../../../../utils'
 import { Box, Typography } from '@material-ui/core'
+import { useChat } from '../../../pages/Home/contexts/chatContext'
 import useStyles from './styles'
 
 const Messages = () => {
@@ -14,6 +14,7 @@ const Messages = () => {
   const scroll = useRef() as React.MutableRefObject<HTMLDivElement>
   const { chatID } = useParams<{ chatID: string }>()
   const [messages, setMessages] = useState<Message[]>([])
+  const { subscribeMessages } = useChat()
 
   useEffect(() => {
     const unsubscribe = internalSubscribeMessages()
@@ -24,7 +25,8 @@ const Messages = () => {
   }, [chatID])
 
   const internalSubscribeMessages = () => {
-    return subscribeMessages(chatID).onSnapshot((snapshot) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return subscribeMessages(chatID).onSnapshot((snapshot: { docs: any[] }) => {
       const messages = snapshot.docs.map((doc) => convertDocToMessage(doc))
       setMessages(messages)
       scroll.current.scrollIntoView({ behavior: 'smooth' })

@@ -1,5 +1,5 @@
 import { db } from '../../../infra/firebase'
-import Chat from '../../../types/Chat'
+import Chat from '@customTypes/Chat'
 import { convertDocToUser } from '../../../utils'
 
 export const addPerson = async (id: string, chatID: string, chat: Chat) => {
